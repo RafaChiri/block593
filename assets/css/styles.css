@@ -1,0 +1,333 @@
+/* --- RESET & BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #F7F4E7;
+    color: #000000;
+    line-height: 1.6;
+}
+
+/* --- NAVBAR --- */
+.navbar {
+    background-color: #0F3B2F;
+    padding: 15px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-logo img { width: 220px; }
+
+.nav-menu {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-link {
+    color: #F7F4E7;
+    text-decoration: none;
+    font-family: Impact, sans-serif;
+    font-size: 19pt;
+    position: relative;
+    transition: 0.3s;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #F7F4E7;
+    left: 0; bottom: -5px;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after { transform: scaleX(1); }
+
+/* --- HERO DINÁMICO (Sin divs vacíos) --- */
+.hero {
+    height: 85vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    text-align: center;
+    color: #F7F4E7;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    filter: blur(2px);
+    transform: scale(1.1);
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-position: center 25%;
+    background-size: cover;
+    background-image: url('../img/banners/banner_inicio.jpg'); 
+}
+/* Clases específicas para cambiar fondos */
+.hero-cat::before { background-image: url('../img/banners/banner_categorias.jpg'); }
+.hero-prod::before { background-image: url('../img/banners/banner_inicio.jpg'); }
+
+.hero-content h1 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(3rem, 10vw, 6rem);
+    text-transform: uppercase;
+    line-height: 0.9;
+    text-shadow: 2px 2px 20px rgba(0,0,0,1);
+}
+
+/* --- SECCIONES REUTILIZABLES --- */
+.products-section, .categories-section, .brand-story {
+    padding: 80px 10%;
+    scroll-margin-top: 100px;
+}
+
+.brand-story { text-align: center; }
+
+.products-grid, .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* --- TARJETAS UNIFICADAS (Cards) --- */
+.product-card, .category-card {
+    background: #ffffff;
+    border-radius: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card { background: #1a1a1a; }
+
+.desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.category-card .desc {
+    color: #b0b0b0; 
+}
+
+.product-card:hover, .category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}
+
+.product-card img, .category-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    padding: 15px;
+    border-radius: 30px;
+}
+
+.category-card img {
+    height: auto;
+}
+
+
+.product-info, .category-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.category-info { color: #F7F4E7; }
+
+/* --- TÍTULOS --- */
+.block-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 2.5rem;
+    color: #0F3B2F;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.block-subtitle {
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+/* --- BOTONES --- */
+.btn-primary {
+    display: inline-block;
+    background-color: #0F3B2F;
+    color: #F7F4E7;
+    padding: 18px 45px;
+    margin-top: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    border: 1px solid #0F3B2F;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #F7F4E7;
+    color: #0F3B2F;
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: #000000;
+    color: #F7F4E7;
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 3px solid #0F3B2F;
+}
+
+.logo-footer-img { width: 140px; margin-bottom: 20px; }
+
+.copyright {
+    margin-top: 10px;
+    font-size: 0.65rem;
+    color: #9b9b9b;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* --- FORMULARIO DE CONTACTO --- */
+.main-contacto {
+    padding: 60px 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 200px); 
+}
+
+.form-wrapper {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 650px;
+    padding: 50px;
+    border-radius: 40px;
+    box-shadow: 0 15px 40px rgba(15, 59, 47, 0.1);
+}
+
+.form-wrapper .block-title {
+    margin-bottom: 5px;
+    font-size: 2.2rem;
+}
+
+.form-wrapper .block-subtitle {
+    margin-bottom: 35px;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* --- GRUPOS DE ENTRADA --- */
+.input-group {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.input-group label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #0F3B2F;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.input-group input, 
+.input-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+}
+
+.input-group textarea {
+    height: 120px;
+    resize: none; 
+}
+
+/* --- ESTADOS DE VALIDACIÓN (Para el Script) --- */
+.input-group input:focus, 
+.input-group textarea:focus {
+    outline: none;
+    border-color: #0F3B2F;
+    background-color: #ffffff;
+}
+
+.no-valid {
+    border-color: #d9534f !important;
+    background-color: #fff9f9 !important;
+}
+
+.error-text {
+    color: #d9534f;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-top: 6px;
+    display: none; 
+    text-transform: uppercase;
+}
+
+/* --- CONTENEDOR DE BOTÓN --- */
+.btn-container {
+    margin-top: 10px;
+}
+
+.form-wrapper .btn-primary {
+    border-radius: 12px;
+    padding: 20px;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+
+/* --- RESPONSIVE --- */
+@media screen and (max-width: 768px) {
+    .nav-container { flex-direction: column; gap: 15px; }
+    .nav-link { font-size: 15pt; }
+    .hero-content h1 { font-size: 2.5rem; }
+    .products-grid, .categories-grid { grid-template-columns: 1fr; }
+    .btn-primary { width: 100%; text-align: center; }
+    .form-wrapper {
+        padding: 30px 20px;
+        border-radius: 20px;
+    }
+    
+    .form-wrapper .block-title {
+        font-size: 1.8rem;
+    }
+}
